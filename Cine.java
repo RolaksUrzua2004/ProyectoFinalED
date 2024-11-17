@@ -6,7 +6,7 @@ package com.mycompany.proyectocine;
 
 /**
  *
- * @author user
+ * @author Sveen Urzua
  */
 import java.util.ArrayList;
 
