@@ -12,13 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Representa el cine, que contiene una lista de funciones y puede generar reportes de ventas.
+ * Representa el sistema del cine.
+ * Contiene una lista de funciones y métodos para generar reportes de ventas.
  */
 public class Cine {
-    private List<Funcion> funciones;
+    private List<Funcion> funciones; // Lista de funciones disponibles en el cine
 
     /**
-     * Constructor que inicializa el cine y agrega las funciones disponibles.
+     * Constructor que inicializa la lista de funciones.
+     * Llama al método para agregar funciones con sus horarios y precios.
      */
     public Cine() {
         this.funciones = new ArrayList<>();
@@ -26,21 +28,24 @@ public class Cine {
     }
 
     /**
-     * Agrega funciones con películas y horarios al cine.
+     * Agrega funciones (películas) con sus horarios y precios al sistema del cine.
      */
     private void agregarFunciones() {
-        funciones.add(new Funcion("Venom el último baile", "2:00 PM"));
-        funciones.add(new Funcion("Sonríe 2", "5:00 PM"));
-        funciones.add(new Funcion("Gladiador (ReEstreno)", "8:00 PM"));
+        funciones.add(new Funcion("Venom el último baile", "2:00 PM", 120.0)); // Precio: 120
+        funciones.add(new Funcion("Sonríe 2", "5:00 PM", 100.0));             // Precio: 100
+        funciones.add(new Funcion("Gladiador (ReEstreno)", "8:00 PM", 150.0)); // Precio: 150
     }
 
-    // Obtiene la lista de funciones
+    /**
+     * Devuelve la lista de funciones disponibles.
+     * @return Lista de funciones.
+     */
     public List<Funcion> getFunciones() {
         return funciones;
     }
 
     /**
-     * Genera un reporte general con el total de boletos vendidos y ganancias.
+     * Genera un reporte general con la cantidad de boletos vendidos y las ganancias totales.
      */
     public void reporteGeneral() {
         int totalBoletos = 0;
@@ -53,18 +58,20 @@ public class Cine {
 
         System.out.println("Reporte General de Ventas:");
         System.out.println("Boletos Vendidos: " + totalBoletos);
-        System.out.println("Total Ganancias: " + totalGanancias);
+        System.out.println("Total Ganancias: $" + totalGanancias);
     }
 
     /**
-     * Genera un reporte por cada función, con la cantidad de boletos vendidos y ganancias.
+     * Genera un reporte detallado por función.
+     * Muestra la cantidad de boletos vendidos y las ganancias por cada función.
      */
     public void reportePorFuncion() {
         System.out.println("Reporte por Función:");
         for (Funcion funcion : funciones) {
             System.out.println("Función: " + funcion.getNombre() + " - " + funcion.getHorario());
             System.out.println("Boletos Vendidos: " + funcion.cantidadBoletosVendidos());
-            System.out.println("Ganancias: " + funcion.totalGanancias());
+            System.out.println("Ganancias: $" + funcion.totalGanancias());
+            System.out.println();
         }
     }
 }
